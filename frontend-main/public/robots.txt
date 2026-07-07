@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /ai-match
+Disallow: /learning-path
+Disallow: /track-progress
+Disallow: /profile
+Disallow: /bookmark
+Disallow: /admin
+
+Sitemap: https://jobmaikub.org/sitemap.xml
