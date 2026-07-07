@@ -1,0 +1,458 @@
+/* 
+  Core styling for Jobmaikub
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core colors */
+    --background: 210 40% 96%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 227 71% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 227 71% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 227 71% 55%;
+
+    --heatmap-0: 230 25% 93%;
+    --heatmap-1: 234 40% 82%;
+    --heatmap-2: 234 50% 72%;
+    --heatmap-3: 234 55% 62%;
+    --heatmap-4: 234 60% 50%;
+
+    --radius: 0.75rem;
+
+    /* Stat card icon colors */
+    --stat-blue: 217 91% 60%;
+    --stat-pink: 330 81% 60%;
+    --stat-purple: 262 83% 58%;
+    --stat-green: 142 71% 45%;
+    --stat-coral: 16 85% 61%;
+    --stat-cyan: 189 94% 43%;
+    --stat-teal: 168 76% 42%;
+    --stat-mint: 162 63% 51%;
+
+    /* Growth indicators */
+    --growth-high: 152 60% 40%;
+    --growth-high-bg: 152 60% 95%;
+    --growth-high-foreground: 152 60% 25%;
+    --growth-medium: 35 85% 50%;
+    --growth-medium-bg: 35 85% 95%;
+    --growth-medium-foreground: 35 85% 30%;
+    --growth-stable: 210 65% 55%;
+    --growth-stable-bg: 210 65% 95%;
+    --growth-stable-foreground: 210 65% 30%;
+
+    /* Custom semantic tokens */
+    --cta-bg: 228 55% 12%;
+    --cta-foreground: 0 0% 100%;
+    --section-bg: 232 30% 97%;
+    --star: 45 93% 58%;
+    --star-muted: 220 10% 85%;
+
+    /* Admin layout */
+    --sidebar-width: 240px;
+    --header-height: 64px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 227 71% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 227 71% 95%;
+    --sidebar-accent-foreground: 227 71% 55%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 227 71% 55%;
+
+    /* Table */
+    --table-header: 234 94% 63%;
+    --table-header-foreground: 0 0% 100%;
+    --table-row-hover: 220 14% 98%;
+
+    --brand: 234 94% 63%;
+    --brand-light: 234 80% 96%;
+    --success: 152 60% 50%;
+    --success-light: 152 60% 94%;
+    --warning: 30 90% 55%;
+    --warning-light: 30 80% 94%;
+    --info: 200 80% 55%;
+    --info-light: 200 80% 94%
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 223 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 47% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212 27% 84%;
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 220 10% 70%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 227 71% 20%;
+    --sidebar-accent-foreground: 227 71% 70%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 217 91% 60%;
+
+    --table-header: 234 94% 63%;
+    --table-header-foreground: 0 0% 100%;
+    --table-row-hover: 220 20% 15%;
+
+    --brand: 234 94% 63%;
+    --brand-light: 234 80% 96%;
+    --success: 152 60% 50%;
+    --success-light: 152 60% 94%;
+    --warning: 30 90% 55%;
+    --warning-light: 30 80% 94%;
+    --info: 200 80% 55%;
+    --info-light: 200 80% 94%;
+  }
+}
+
+@layer base {
+  html {
+    overflow-y: scroll !important;
+    scrollbar-gutter: stable !important;
+    /* Reserve space for scrollbar to prevent layout shift */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* 
+  Final Stability Strategy
+  1. Force scrollbar to ALWAYS be visible at the html level.
+  2. This is the most reliable way to prevent horizontal jumps.
+*/
+html {
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable !important;
+}
+
+body {
+  /* Prevent Radix from adding padding to the body */
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+/* Neutralize Radix internal scrollbar size calculation */
+:root {
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
+/* Force body to keep scrollbar even when Radix tries to hide it */
+body[data-scroll-locked] {
+  overflow-y: scroll !important;
+  padding-right: 0 !important;
+}
+
+/* Admin Table Header Fix - Aggressively remove vertical lines */
+.admin-table-header {
+  background-color: #4A5DF9 !important;
+  border: 0 !important;
+  border-spacing: 0 !important;
+  border-collapse: collapse !important;
+}
+
+.admin-table-header th {
+  border: 0 !important;
+  border-width: 0 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px #4A5DF9 !important;
+  /* Fills sub-pixel gaps */
+  background-color: #4A5DF9 !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Force all tables to collapse to prevent gaps */
+table {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+}
+
+thead,
+tbody,
+tr,
+th,
+td {
+  border-color: inherit;
+}
+
+.profile-theme {
+  --background: 230 25% 95%;
+  --foreground: 230 25% 10%;
+  --primary: 234 94% 63%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 234 60% 95%;
+  --secondary-foreground: 234 94% 50%;
+  --muted: 230 20% 92%;
+  --muted-foreground: 230 10% 45%;
+  --accent: 234 60% 95%;
+  --accent-foreground: 234 94% 50%;
+  --border: 230 20% 88%;
+  --input: 230 20% 88%;
+  --ring: 234 94% 63%;
+  --radius: 0.75rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-theme.dark,
+.dark .profile-theme {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --border: 217.2 32.6% 17.5%;
+}
+
+/* Review Highlight - Professional Pseudo-element Version */
+.highlight-comment {
+  position: relative;
+  background-color: hsl(var(--primary) / 0.08) !important;
+  transform: scale(1.005);
+}
+
+.highlight-comment::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: hsl(var(--primary));
+  border-radius: 4px 0 0 4px;
+}
+
+/* Premium Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.5;
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes radar-scan {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar {
+  animation: radar-scan 4s linear infinite;
+}
+
+@keyframes float-alt {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(4px, -6px);
+  }
+
+  66% {
+    transform: translate(-4px, -3px);
+  }
+}
+
+.animate-float-alt {
+  animation: float-alt 5s ease-in-out infinite;
+}
+
+@keyframes orbit-slow {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+.animate-orbit-slow {
+  animation: orbit-slow 10s linear infinite;
+}
+
+@keyframes orbit-fast {
+  from {
+    transform: rotate(0deg) translateX(60px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg) translateX(60px) rotate(360deg);
+  }
+}
+
+.animate-orbit-fast {
+  animation: orbit-fast 7s linear infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes scan-wide {
+  0% {
+    transform: translateX(-100px) rotate(-10deg);
+  }
+
+  50% {
+    transform: translateX(100px) rotate(10deg);
+  }
+
+  100% {
+    transform: translateX(-100px) rotate(-10deg);
+  }
+}
+
+.animate-scan-wide {
+  animation: scan-wide 6s ease-in-out infinite;
+}
+
+@keyframes scan-reverse {
+  0% {
+    transform: translateX(200px);
+  }
+
+  50% {
+    transform: translateX(-200px);
+  }
+
+  100% {
+    transform: translateX(200px);
+  }
+}
+
+.animate-scan-reverse {
+  animation: scan-reverse 6s ease-in-out infinite;
+}
+
+@keyframes scan-clip {
+  0% {
+    clip-path: circle(48px at calc(50% - 80px) 50%);
+  }
+
+  50% {
+    clip-path: circle(48px at calc(50% + 80px) 50%);
+  }
+
+  100% {
+    clip-path: circle(48px at calc(50% - 80px) 50%);
+  }
+}
+
+.animate-scan-clip {
+  animation: scan-clip 6s ease-in-out infinite;
+}
